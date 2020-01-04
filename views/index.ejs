@@ -5,14 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Chat App</title>
+  <link rel="stylesheet" href="css/index.css">
   <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
   <script defer src="script.js"></script>
 </head>
 <body>
   <div id="room-container">
     <% Object.keys(rooms).forEach(room => { %>
-      <div><%= room %></div>
-      <a href="/<%= room %>">Join</a>
+      <div class="room-tab"><%= room %> 
+        <a href="/<%= room %>">- join</a>
+      </div>
+     
     <% }) %>
   </div>
   <form action="/room" method="POST">
