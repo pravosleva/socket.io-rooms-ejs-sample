@@ -4,6 +4,29 @@ const roomContainer = document.getElementById("room-container");
 const messageForm = document.getElementById("send-container");
 const messageInput = document.getElementById("message-input");
 
+var URLexpression = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
+var URLregex = new RegExp(URLexpression);
+
+function urlStringCheck(s) {
+  if (s.match(URLregex)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+function createUrlFromString(s) {
+  let finalMsg = "";
+  s.split(" ").forEach(el => {
+    finalMsg += " ";
+    if (el.match(URLregex)) {
+      finalMsg += `<a href="${el}">${el}</a>`;
+    } else {
+      finalMsg += el;
+    }
+  });
+  return finalMsg;
+}
+
 function setCookie(cname, cvalue, exdays) {
   var d = new Date();
   d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
@@ -42,10 +65,14 @@ if (messageForm != null) {
   messageForm.addEventListener("submit", e => {
     e.preventDefault();
     const message = messageInput.value;
-    if(message != "") {
-    appendMessage(`You: ${message}`, "You");
-    socket.emit("send-chat-message", roomName, message);
-    messageInput.value = "";
+    if (message != "") {
+      if (!urlStringCheck(message)) {
+        appendMessage(`You: ${message}`, "You");
+        socket.emit("send-chat-message", roomName, message);
+        messageInput.value = "";
+      } else {
+        appendMessage(`You: ${createUrlFromString(message)}`, "You", "html");
+      }
     }
   });
 }
@@ -72,15 +99,32 @@ socket.on("user-disconnected", name => {
   appendMessage(`${name} left`, "Status");
 });
 
-function appendMessage(message, sender) {
+function appendMessage(message, sender, mode = "text") {
   const messageElement = document.createElement("div");
-  if(sender == "You"){
-    messageElement.classList.add('animated', 'fadeInRight', 'faster', 'fromYou');
-  } else if(sender == "Status"){
-    messageElement.classList.add('animated', 'fadeInLeft', 'faster', 'statusMsg');
+  if (sender == "You") {
+    messageElement.classList.add(
+      "animated",
+      "fadeInRight",
+      "faster",
+      "fromYou"
+    );
+  } else if (sender == "Status") {
+    messageElement.classList.add(
+      "animated",
+      "fadeInLeft",
+      "faster",
+      "statusMsg"
+    );
   } else {
-    messageElement.classList.add('animated', 'fadeInLeft', 'faster', 'fromElse');
+    messageElement.classList.add(
+      "animated",
+      "fadeInLeft",
+      "faster",
+      "fromElse"
+    );
   }
-  messageElement.innerText = message;
+  if (mode == "text") messageElement.innerText = message;
+  if (mode == "html") messageElement.innerHTML = message;
+
   messageContainer.append(messageElement);
 }
