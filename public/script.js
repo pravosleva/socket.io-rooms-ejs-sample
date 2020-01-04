@@ -79,12 +79,15 @@ if (messageForm != null) {
 
 socket.on("room-created", room => {
   const roomElement = document.createElement("div");
+  roomElement.classList.add(
+    "room-tab",
+  );
   roomElement.innerText = room;
   const roomLink = document.createElement("a");
   roomLink.href = `/${room}`;
-  roomLink.innerText = "join";
+  roomLink.innerText = " - join";
   roomContainer.append(roomElement);
-  roomContainer.append(roomLink);
+  roomElement.append(roomLink);
 });
 
 socket.on("chat-message", data => {
