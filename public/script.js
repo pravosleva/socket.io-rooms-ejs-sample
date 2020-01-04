@@ -74,6 +74,11 @@ socket.on("user-disconnected", name => {
 
 function appendMessage(message) {
   const messageElement = document.createElement("div");
+  if(message.split(":").includes("You")){
+    messageElement.classList.add('animated', 'fadeInRight', 'faster');
+  } else {
+    messageElement.classList.add('animated', 'fadeInLeft', 'faster');
+  }
   messageElement.innerText = message;
   messageContainer.append(messageElement);
 }
