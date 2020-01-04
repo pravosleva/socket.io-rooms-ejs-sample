@@ -42,9 +42,11 @@ if (messageForm != null) {
   messageForm.addEventListener("submit", e => {
     e.preventDefault();
     const message = messageInput.value;
+    if(message != "") {
     appendMessage(`You: ${message}`);
     socket.emit("send-chat-message", roomName, message);
     messageInput.value = "";
+    }
   });
 }
 
