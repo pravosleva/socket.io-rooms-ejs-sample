@@ -17,13 +17,17 @@ body {
   font-size: 4rem;
 }
 
-#message-container div {
-  background-color: #ccc;
+.fromElse {
+  background: #ccc;
   padding: 5px;
 }
 
-#message-container div:nth-child(2n) {
-  background-color: #fff;
+.fromYou {
+  background: #fff;
+}
+
+.statusMsg {
+  background: rgba(255, 9, 9, 0.616);
 }
 
 #send-container {

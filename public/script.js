@@ -43,7 +43,7 @@ if (messageForm != null) {
     e.preventDefault();
     const message = messageInput.value;
     if(message != "") {
-    appendMessage(`You: ${message}`);
+    appendMessage(`You: ${message}`, "You");
     socket.emit("send-chat-message", roomName, message);
     messageInput.value = "";
     }
@@ -61,23 +61,25 @@ socket.on("room-created", room => {
 });
 
 socket.on("chat-message", data => {
-  appendMessage(`${data.name}: ${data.message}`);
+  appendMessage(`${data.name}: ${data.message}`, "Else");
 });
 
 socket.on("user-connected", name => {
-  appendMessage(`${name} connected`);
+  appendMessage(`${name}`, "Status");
 });
 
 socket.on("user-disconnected", name => {
-  appendMessage(`${name} disconnected`);
+  appendMessage(`${name} left`, "Status");
 });
 
-function appendMessage(message) {
+function appendMessage(message, sender) {
   const messageElement = document.createElement("div");
-  if(message.split(":").includes("You")){
-    messageElement.classList.add('animated', 'fadeInRight', 'faster');
+  if(sender == "You"){
+    messageElement.classList.add('animated', 'fadeInRight', 'faster', 'fromYou');
+  } else if(sender == "Status"){
+    messageElement.classList.add('animated', 'fadeInLeft', 'faster', 'statusMsg');
   } else {
-    messageElement.classList.add('animated', 'fadeInLeft', 'faster');
+    messageElement.classList.add('animated', 'fadeInLeft', 'faster', 'fromElse');
   }
   messageElement.innerText = message;
   messageContainer.append(messageElement);
