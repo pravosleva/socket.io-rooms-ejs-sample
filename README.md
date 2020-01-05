@@ -8,7 +8,7 @@ run ```npm i```
 
 then run ```node server.js```
 
-in your browser just go to [*http:localhost:5000*](http:localhost:5000*)
+in your browser just go to [*http://localhost:5000*](http://localhost:5000*)
 
 ## Todo:
 * better design
