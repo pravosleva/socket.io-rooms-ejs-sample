@@ -1,11 +1,14 @@
-const socket = io("http://localhost:5000");
+const getUrl = window.location;
+const baseUrl = getUrl .protocol + "//" + getUrl.host;
+console.log(baseUrl);
+const socket = io(baseUrl);
 const messageContainer = document.getElementById("message-container");
 const roomContainer = document.getElementById("room-container");
 const messageForm = document.getElementById("send-container");
 const messageInput = document.getElementById("message-input");
 
-var URLexpression = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
-var URLregex = new RegExp(URLexpression);
+const URLexpression = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
+const URLregex = new RegExp(URLexpression);
 
 function urlStringCheck(s) {
   if (s.match(URLregex)) {
