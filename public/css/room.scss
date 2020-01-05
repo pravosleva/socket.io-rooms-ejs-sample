@@ -38,7 +38,8 @@ body {
 #message-input {
   flex-grow: 1;
   height: 12vh;
-  font-size: 4rem;
+  font-size: 4vmin;
+  max-width: 70vw;
 }
 #send-button {
   width: 14vh;
