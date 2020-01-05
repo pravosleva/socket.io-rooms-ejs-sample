@@ -1,11 +1,13 @@
 const getUrl = window.location;
-const baseUrl = getUrl .protocol + "//" + getUrl.host;
+const baseUrl = getUrl.protocol + "//" + getUrl.host;
 console.log(baseUrl);
 const socket = io(baseUrl);
 const messageContainer = document.getElementById("message-container");
+const scrollContainer = document.getElementById("scrollContainer");
 const roomContainer = document.getElementById("room-container");
 const messageForm = document.getElementById("send-container");
 const messageInput = document.getElementById("message-input");
+
 
 const URLexpression = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
 const URLregex = new RegExp(URLexpression);
@@ -82,9 +84,7 @@ if (messageForm != null) {
 
 socket.on("room-created", room => {
   const roomElement = document.createElement("div");
-  roomElement.classList.add(
-    "room-tab",
-  );
+  roomElement.classList.add("room-tab");
   roomElement.innerText = room;
   const roomLink = document.createElement("a");
   roomLink.href = `/${room}`;
@@ -107,6 +107,11 @@ socket.on("user-disconnected", name => {
 
 function appendMessage(message, sender, mode = "text") {
   const messageElement = document.createElement("div");
+  const y = scrollContainer.getBoundingClientRect().top + window.scrollY;
+  window.scroll({
+    top: y,
+    behavior: 'smooth'
+  });
   if (sender == "You") {
     messageElement.classList.add(
       "animated",
