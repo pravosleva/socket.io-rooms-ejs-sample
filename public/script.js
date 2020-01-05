@@ -95,7 +95,7 @@ socket.on("chat-message", data => {
 });
 
 socket.on("user-connected", name => {
-  appendMessage(`${name}`, "Status");
+  appendMessage(`${name} joined`, "Status");
 });
 
 socket.on("user-disconnected", name => {
