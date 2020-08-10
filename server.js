@@ -33,7 +33,6 @@ app.get('/:room', (req, res) => {
 });
 
 server.listen(process.env.PORT || 5000);
-//server.listen(5000);
 
 io.on('connection', socket => {
   socket.on('new-user', (room, name) => {
