@@ -6,7 +6,7 @@ A simple secure chatting app, that doesn't require a server. it runs on the [Web
 
 run ```npm i```
 
-then run ```node server.js```
+then run ```npm run dev```
 
 in your browser just go to [*http://localhost:5000*](http://localhost:5000*)
 
