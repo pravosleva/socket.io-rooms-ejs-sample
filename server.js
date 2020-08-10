@@ -3,6 +3,8 @@ const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 
+/* Express config */
+
 app.set('views', './views');
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
@@ -10,16 +12,15 @@ app.use(express.urlencoded({ extended: true }));
 
 const rooms = { };
 
-app.get('/', (req, res) => {
+app.get('/', (_req, res) => {
   res.render('index', { rooms: rooms });
 });
 
 app.post('/room', (req, res) => {
-  if (rooms[req.body.room] != null) {
-    return res.redirect('/');
-  }
+  if (rooms[req.body.room] != null) return res.redirect('/');
   rooms[req.body.room] = { users: {} };
   res.redirect(req.body.room);
+
   // Send message that new room was created
   io.emit('room-created', req.body.room);
 });
