@@ -2,15 +2,21 @@ const getUrl = window.location;
 const baseUrl = getUrl.protocol + "//" + getUrl.host;
 console.log(baseUrl);
 const socket = io(baseUrl);
+
+/* DOM */
+
 const messageContainer = document.getElementById("message-container");
 const scrollContainer = document.getElementById("scrollContainer");
 const roomContainer = document.getElementById("room-container");
 const messageForm = document.getElementById("send-container");
 const messageInput = document.getElementById("message-input");
 
+/* Regex */
 
 const URLexpression = /[a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
 const URLregex = new RegExp(URLexpression);
+
+/* Code */
 
 function urlStringCheck(s) {
   if (s.match(URLregex)) {
