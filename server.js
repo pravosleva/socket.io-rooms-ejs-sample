@@ -56,4 +56,4 @@ const getUserRooms = (socket) => {
     if (room.users[socket.id] != null) names.push(name);
     return names;
   }, []);
-}
+};

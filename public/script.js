@@ -18,13 +18,10 @@ const URLregex = new RegExp(URLexpression);
 
 /* Code */
 
-function urlStringCheck(s) {
-  if (s.match(URLregex)) {
-    return true;
-  } else {
-    return false;
-  }
-}
+const urlStringCheck = (s) => {
+  return s.match(URLregex);
+};
+
 function createUrlFromString(s) {
   let finalMsg = "";
   s.split(" ").forEach(el => {
