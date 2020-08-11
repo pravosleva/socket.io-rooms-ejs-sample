@@ -25,11 +25,8 @@ function createUrlFromString(s) {
   let finalMsg = "";
   s.split(" ").forEach((el) => {
     finalMsg += " ";
-    if (el.match(URLregex)) {
-      finalMsg += `<a href="${el}">${el}</a>`;
-    } else {
-      finalMsg += el;
-    }
+    if (el.match(URLregex)) finalMsg += `<a href="${el}">${el}</a>`;
+    else finalMsg += el;
   });
   return finalMsg;
 }
