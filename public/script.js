@@ -24,7 +24,7 @@ const urlStringCheck = (s) => {
 
 function createUrlFromString(s) {
   let finalMsg = "";
-  s.split(" ").forEach(el => {
+  s.split(" ").forEach((el) => {
     finalMsg += " ";
     if (el.match(URLregex)) {
       finalMsg += `<a href="${el}">${el}</a>`;
@@ -70,7 +70,7 @@ if (messageForm != null) {
   appendMessage("You joined");
   socket.emit("new-user", roomName, name);
 
-  messageForm.addEventListener("submit", e => {
+  messageForm.addEventListener("submit", (e) => {
     e.preventDefault();
     const message = messageInput.value;
     if (message != "") {
@@ -85,7 +85,7 @@ if (messageForm != null) {
   });
 }
 
-socket.on("room-created", room => {
+socket.on("room-created", (room) => {
   const roomElement = document.createElement("div");
   roomElement.classList.add("room-tab");
   roomElement.innerText = room;
@@ -96,15 +96,15 @@ socket.on("room-created", room => {
   roomElement.append(roomLink);
 });
 
-socket.on("chat-message", data => {
+socket.on("chat-message", (data) => {
   appendMessage(`${data.name}: ${data.message}`, "Else");
 });
 
-socket.on("user-connected", name => {
+socket.on("user-connected", (name) => {
   appendMessage(`${name} joined`, "Status");
 });
 
-socket.on("user-disconnected", name => {
+socket.on("user-disconnected", (name) => {
   appendMessage(`${name} left`, "Status");
 });
 
@@ -113,7 +113,7 @@ function appendMessage(message, sender, mode = "text") {
   const y = scrollContainer.getBoundingClientRect().top + window.scrollY;
   window.scroll({
     top: y,
-    behavior: 'smooth'
+    behavior: "smooth",
   });
   if (sender == "You") {
     messageElement.classList.add(
