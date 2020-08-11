@@ -1,6 +1,5 @@
 const getUrl = window.location;
 const baseUrl = getUrl.protocol + "//" + getUrl.host;
-console.log(baseUrl);
 const socket = io(baseUrl);
 
 /* DOM */
