@@ -105,11 +105,7 @@ socket.on("user-disconnected", (name) => {
 
 function appendMessage(message, sender, mode = "text") {
   const messageElement = document.createElement("div");
-  const y = scrollContainer.getBoundingClientRect().top + window.scrollY;
-  window.scroll({
-    top: y,
-    behavior: "smooth",
-  });
+  const y = scrollContainer.getBoundingClientRect().height + window.scrollY;
   if (sender == "You") {
     messageElement.classList.add(
       "animated",
@@ -136,4 +132,5 @@ function appendMessage(message, sender, mode = "text") {
   if (mode == "html") messageElement.innerHTML = message;
 
   messageContainer.append(messageElement);
+  messageContainer.scroll({ top: y, behavior: "smooth" });
 }
