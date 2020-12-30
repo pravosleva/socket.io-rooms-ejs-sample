@@ -11,15 +11,17 @@ body {
 #message-container {
   width: 80%;
   max-width: 1200px;
-  font-size: 4rem;
+  font-size: 1.1rem;
   max-height: 80vh;
   overflow-y: auto;
   overflow-x: hidden;
 }
+#message-container > div {
+  padding: 5px;
+}
 
 .fromElse {
   background: #ccc;
-  padding: 5px;
 }
 
 .fromYou {
@@ -33,19 +35,28 @@ body {
   padding-bottom: 30px;
   bottom: 0;
   background-color: white;
-  max-width: 1200px;
-  width: 80%;
+  width: 100%;
+  max-width: 100vw;
   display: flex;
 }
 
 #message-input {
   flex-grow: 1;
   height: 12vh;
-  max-width: 70vw;
-  font-size: 4rem;
+  max-width: calc(100% - 14vh);
+  font-size: 1.1rem;
+  border: 1px solid lightgray;
+  border-radius: 4px 0 0 4px;
+  border-right: none;
 }
 #send-button {
   width: 14vh;
   font-size: 4rem;
   font-size: 4vmin;
+  border: 1px solid lightgray;
+  border-radius: 0 4px 4px 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
