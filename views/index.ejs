@@ -10,6 +10,10 @@
   <script defer src="script.js"></script>
 </head>
 <body>
+  <form action="/room" method="POST">
+    <input name="room" type="text" required>
+    <button type="submit">New Room</button>
+  </form>
   <div id="room-container">
     <% Object.keys(rooms).forEach(room => { %>
       <div class="room-tab"><%= room %> 
@@ -18,9 +22,5 @@
      
     <% }) %>
   </div>
-  <form action="/room" method="POST">
-    <input name="room" type="text" required>
-    <button type="submit">New Room</button>
-  </form>
 </body>
 </html>
