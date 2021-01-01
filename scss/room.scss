@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
-
 body {
   padding: 0;
   margin: 0;
@@ -9,10 +8,10 @@ body {
 }
 
 #message-container {
-  width: 80%;
+  width: 100%;
   max-width: 1200px;
   font-size: 1.1rem;
-  max-height: 80vh;
+  max-height: calc(100vh - 30px);
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -32,7 +31,6 @@ body {
 }
 #send-container {
   position: fixed;
-  padding-bottom: 30px;
   bottom: 0;
   background-color: white;
   width: 100%;
@@ -42,21 +40,27 @@ body {
 
 #message-input {
   flex-grow: 1;
-  height: 12vh;
-  max-width: calc(100% - 14vh);
+  line-height: 30px;
+  max-width: calc(100% - 35px);
   font-size: 1.1rem;
   border: 1px solid lightgray;
-  border-radius: 4px 0 0 4px;
+  border-radius: 0 0 0 4px;
   border-right: none;
+  padding: 0;
+  margin: 0;
+  outline: none;
 }
 #send-button {
-  width: 14vh;
+  width: 35px;
+  line-height: 30px;
   font-size: 4rem;
   font-size: 4vmin;
   border: 1px solid lightgray;
-  border-radius: 0 4px 4px 0;
+  border-radius: 0 0 4px 0;
 
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
+/*# sourceMappingURL=room.css.map */
