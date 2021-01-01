@@ -4,14 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "yarn make-css:prod && node server.js",
-    "dev": "yarn make-css:prod && nodemon server.js",
-    "sass:sample": "node_modules/.bin/node-sass scss -o public/css",
-    "sass:watch": "node_modules/.bin/node-sass -w scss -o public/css",
+    "start": "NODE_ENV=production yarn make-css:prod && node server.js",
+    "dev": "yarn make-css:prod && NODE_ENV=development nodemon server.js",
     "sass:prod": "node_modules/.bin/node-sass scss -o scss/output --output-style compressed --source-map true",
     "sass:prod2": "bash bin/convert-scss-to-css.sh",
     "css-autoprefix": "node ./scripts/css-autoprefix.js",
     "make-css:prod": "yarn sass:prod && yarn css-autoprefix"
+  },
+  "nodemonConfig": {
+    "ext": "*.js, *.css, *.ejs",
+    "ignore": ["bin/*", "scripts/*"],
+    "delay": "1500"
   },
   "author": "",
   "license": "ISC",

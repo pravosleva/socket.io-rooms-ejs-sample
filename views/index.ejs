@@ -5,22 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Chat App</title>
+  <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/index.css">
   <script defer src="/socket.io/socket.io.js"></script>
   <script defer src="script.js"></script>
 </head>
 <body>
-  <form action="/room" method="POST">
-    <input name="room" type="text" required>
-    <button type="submit">New Room</button>
+  <form id="send-container" action="/room" method="POST">
+    <input name="room" type="text" required id="message-input">
+    <button type="submit" id="send-button">Create</button>
   </form>
   <div id="room-container">
     <% Object.keys(rooms).forEach(room => { %>
-      <div class="room-tab"><%= room %> 
+      <div class="room-tab"><%= room %>
         <a href="/<%= room %>">- join</a>
       </div>
-     
     <% }) %>
+    <%if (settings.env === 'development') { %>
+      <pre><%= JSON.stringify(settings, null, 2) %></pre>
+    <% } %>
   </div>
 </body>
 </html>

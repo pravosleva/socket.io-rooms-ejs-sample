@@ -1,23 +1,25 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+@import './variables.scss';
 
 body {
-  margin: 0;
   padding: 0;
-  width: 100vw;
-  height: 100vh;
+  margin: 0;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
+  justify-content: center;
   font-family: "Montserrat", sans-serif;
+}
+
+#room-container {
+  border: 1px dashed $red;
 }
 
 .room-tab {
   margin-bottom: 2vh;
-  font-size: 1rem;
+  font-size: 16px;
 }
 a {
   text-decoration: none;
-  color: black;
+  color: $primary-color;
   font-weight: bold;
 }
