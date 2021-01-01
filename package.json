@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=production yarn make-css:prod && node server.js",
+    "start": "yarn make-css:prod && NODE_ENV=production node server.js",
     "dev": "yarn make-css:prod && NODE_ENV=development nodemon server.js",
     "sass:prod": "node_modules/.bin/node-sass scss -o scss/output --output-style compressed --source-map true",
     "sass:prod2": "bash bin/convert-scss-to-css.sh",
