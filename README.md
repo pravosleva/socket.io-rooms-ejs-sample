@@ -38,15 +38,16 @@ const fs = require('fs')
 
 const srcDir = 'scss/output'
 const outputDir = 'public/css'
+const getPath = (dir, filename) => `${dir}/${filename}`
 
 function makeCSS(filename) {
   fs.readFile(`${srcDir}/${filename}`, (err, css) => {
     postcss([precss, autoprefixer])
-      .process(css, { from: `${srcDir}/${filename}`, to: `${outputDir}/${filename}` })
+      .process(css, { from: getPath(srcDir, filename), to: getPath(outputDir, filename) })
       .then(result => {
-        fs.writeFile(`${outputDir}/${filename}`, result.css, () => true)
+        fs.writeFile(getPath(outputDir, filename), result.css, () => true)
         if (result.map) {
-          fs.writeFile(`${outputDir}/${filename}.map`, result.map, () => true)
+          fs.writeFile(getPath(outputDir, `${filename}.map`), result.map, () => true)
         }
       })
   })
@@ -59,6 +60,7 @@ fs.readdir(srcDir, (err, files) => {
     }
   });
 });
+
 ```
 
 `package.json`
