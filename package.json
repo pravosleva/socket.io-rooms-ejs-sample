@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js",
+    "start": "yarn make-css:prod && node server.js",
+    "dev": "yarn make-css:prod && nodemon server.js",
     "sass:sample": "node_modules/.bin/node-sass scss -o public/css",
     "sass:watch": "node_modules/.bin/node-sass -w scss -o public/css",
     "sass:prod": "node_modules/.bin/node-sass scss -o scss/output --output-style compressed --source-map true",
