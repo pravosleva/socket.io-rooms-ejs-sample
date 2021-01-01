@@ -3,7 +3,7 @@
 
 # V1
 
-dist_dir='./public/css'
+dist_dir='./scss/output'
 
 ./node_modules/.bin/node-sass scss -o "${dist_dir}/${path}" || exit 1
 

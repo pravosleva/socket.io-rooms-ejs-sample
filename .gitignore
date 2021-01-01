@@ -1,2 +1,7 @@
 node_modules
 .map
+
+scss/output/*
+!scss/output/.gitkeep
+public/css/*
+!public/css/.gitkeep

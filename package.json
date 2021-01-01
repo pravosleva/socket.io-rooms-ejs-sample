@@ -8,8 +8,10 @@
     "dev": "nodemon server.js",
     "sass:sample": "node_modules/.bin/node-sass scss -o public/css",
     "sass:watch": "node_modules/.bin/node-sass -w scss -o public/css",
-    "sass:prod": "node_modules/.bin/node-sass scss -o public/css --output-style compressed --source-map true",
-    "sass:prod2": "bash bin/convert-scss-to-css.sh"
+    "sass:prod": "node_modules/.bin/node-sass scss -o scss/output --output-style compressed --source-map true",
+    "sass:prod2": "bash bin/convert-scss-to-css.sh",
+    "css-autoprefix": "node ./scripts/css-autoprefix.js",
+    "make-css:prod": "yarn sass:prod && yarn css-autoprefix"
   },
   "author": "",
   "license": "ISC",
@@ -19,7 +21,10 @@
     "socket.io": "^2.3.0"
   },
   "devDependencies": {
+    "autoprefixer": "^10.1.0",
     "node-sass": "^5.0.0",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "postcss": "^8.2.2",
+    "precss": "^4.0.0"
   }
 }
