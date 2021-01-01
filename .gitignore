@@ -3,5 +3,5 @@ node_modules
 
 scss/output/*
 !scss/output/.gitkeep
-# public/css/*
-# !public/css/.gitkeep
+public/css/*
+!public/css/.gitkeep
