@@ -5,15 +5,16 @@
 - [x] [Modern CSS](#modern-css)
   - [x] [Step 1: Convert scss to css](#step-1)
   - [x] [Step 2: Autoprefix](#step-2)
+  - [x] [Step 3: Final](#step-3)
 
 ## modern-css
 
 ### step-1
 
-`package.json`
 ```bash
 yarn add -D node-sass
 ```
+`package.json`
 ```json
 {
   "scripts": {
@@ -69,6 +70,18 @@ fs.readdir(srcDir, (err, files) => {
   "devDependencies": {
     "postcss": "^8.2.2",
     "precss": "^4.0.0"
+  }
+}
+```
+
+### step-3
+`package.json`
+```json
+{
+  "scripts": {
+    "start": "yarn make-css:prod && node server.js",
+    "dev": "yarn make-css:prod && nodemon server.js",
+    "make-css:prod": "yarn sass:prod && yarn css-autoprefix"
   }
 }
 ```
