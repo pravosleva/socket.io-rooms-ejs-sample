@@ -7,10 +7,12 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 
+$send-btn-width: 50;
+
 #message-container {
   width: 100%;
   max-width: 1200px;
-  font-size: 1.1rem;
+  font-size: 16px;
   max-height: calc(100vh - 30px);
   overflow-y: auto;
   overflow-x: hidden;
@@ -41,7 +43,7 @@ body {
 #message-input {
   flex-grow: 1;
   line-height: 30px;
-  max-width: calc(100% - 35px);
+  max-width: calc(100% - #{$send-btn-width}px);
   font-size: 1.1rem;
   border: 1px solid lightgray;
   border-radius: 0 0 0 4px;
@@ -51,10 +53,9 @@ body {
   outline: none;
 }
 #send-button {
-  width: 35px;
+  width: #{$send-btn-width}px;
   line-height: 30px;
-  font-size: 4rem;
-  font-size: 4vmin;
+  font-size: 16px;
   border: 1px solid lightgray;
   border-radius: 0 0 4px 0;
 
